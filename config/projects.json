@@ -1,0 +1,47 @@
+[
+  {
+    "id": "leadsense",
+    "title": "LeadSense AI Email Agent",
+    "description": "Multi-tenant sales email platform for leads, outbound campaigns, and team inbox conversations.",
+    "longDescription": "Developed a multi-tenant platform to organize leads, run outbound campaigns, and manage inbound conversations across teams. Integrated AI-generated personalized outreach and knowledge-base-grounded reply drafts for human review, with background processing for email and campaign workflows.",
+    "tags": [
+      "Node.js",
+      "Express.js",
+      "Python",
+      "PostgreSQL",
+      "Redis",
+      "BullMQ"
+    ],
+    "imageUrl": "/projects/leadsense.svg",
+    "featured": true
+  },
+  {
+    "id": "mining",
+    "title": "Mining Management Software",
+    "description": "Operations software for mine production, employees, equipment, inventory, and finance.",
+    "longDescription": "Built mining operations software to track mine-site production, manage employees, and coordinate equipment, inventory, and finance. Implemented procurement approvals, fuel tracking, role-based access, operational reporting, and Excel and PDF exports.",
+    "tags": [
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "JWT"
+    ],
+    "imageUrl": "/projects/mining.svg",
+    "featured": true
+  },
+  {
+    "id": "ocr",
+    "title": "AI-Powered Agentic OCR & Financial Document Processing Platform",
+    "description": "Enterprise document platform for PDF management and financial data extraction.",
+    "longDescription": "Developed a document-processing platform for a Saudi steel manufacturer, supporting PDF uploads, document management, and financial data extraction. Built APIs and backend services for document validation, database operations, ERP integration, and automated financial workflows.",
+    "tags": [
+      "Next.js",
+      "FastAPI",
+      "Python",
+      "PostgreSQL"
+    ],
+    "imageUrl": "/projects/ocr.svg",
+    "featured": true
+  }
+]

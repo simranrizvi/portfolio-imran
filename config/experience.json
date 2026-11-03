@@ -1,0 +1,58 @@
+[
+  {
+    "id": "agenticsense",
+    "company": "AgenticSense",
+    "position": "Full Stack Developer",
+    "duration": "Nov 2025 - Present",
+    "startDate": "2025-11-01",
+    "description": "Develop and maintain full-stack applications for enterprise workflows, including responsive interfaces and backend features. Build secure REST APIs, manage database operations and reliable data flows, and collaborate on performance, architecture, and troubleshooting.",
+    "technologies": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "REST APIs"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "coderatory",
+    "company": "Coderatory",
+    "position": "Full Stack Developer",
+    "duration": "Jun 2025 - Oct 2025",
+    "startDate": "2025-06-01",
+    "endDate": "2025-10-31",
+    "description": "Contributed to full-stack applications from feature implementation through testing and issue resolution. Built responsive interfaces, integrated frontend components with backend APIs, and worked with the team on code quality and project milestones.",
+    "technologies": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "REST APIs"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "hamdard",
+    "company": "Hamdard University, Karachi",
+    "position": "B.S. Computer Science",
+    "duration": "Feb 2025",
+    "startDate": "2025-02-01",
+    "description": "Bachelor of Science in Computer Science.",
+    "technologies": [
+      "Computer Science"
+    ],
+    "type": "education"
+  },
+  {
+    "id": "punjab",
+    "company": "Punjab Group of Colleges, Lahore",
+    "position": "FSc Pre-Engineering",
+    "duration": "2020",
+    "startDate": "2020-01-01",
+    "description": "FSc Pre-Engineering.",
+    "technologies": [
+      "Pre-Engineering"
+    ],
+    "type": "education"
+  }
+]

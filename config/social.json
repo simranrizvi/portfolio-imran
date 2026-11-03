@@ -1,0 +1,17 @@
+[
+  {
+    "platform": "LinkedIn",
+    "url": "https://linkedin.com/in/syed-muhammad-imran-rizvi",
+    "icon": "FaLinkedinIn"
+  },
+  {
+    "platform": "Mail",
+    "url": "mailto:imranrizvi648@gmail.com",
+    "icon": "FaEnvelope"
+  },
+  {
+    "platform": "WhatsApp",
+    "url": "https://wa.me/923322381826",
+    "icon": "FaWhatsapp"
+  }
+]
