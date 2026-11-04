@@ -34,10 +34,10 @@ export default function TechStack() {
   const showSkeleton = isPending;
 
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col gap-4 md:flex-row">
       {/* LEFT CARD */}
-      <div className="rounded-xl md:max-w-xs bg-bg-secondary border border-border-default p-5 min-h-35">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-3">
+      <div className="min-h-35 rounded-2xl border border-border bg-card p-5 shadow-sm md:w-72 md:shrink-0">
+        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Core Technologies & Languages
         </h3>
 
@@ -50,7 +50,7 @@ export default function TechStack() {
             {languages.map((lang) => (
               <span
                 key={lang.name}
-                className="px-3 py-1 text-xs rounded-full border border-border-default font-medium transition"
+                className="rounded-md border border-border px-3 py-1.5 text-xs font-medium"
                 style={{
                   backgroundColor: `${lang.color}20`,
                   color: lang.color,
@@ -64,15 +64,15 @@ export default function TechStack() {
       </div>
 
       {/* RIGHT CARD */}
-      <div className="rounded-xl flex-1 bg-bg-secondary border border-border-default p-2 lg:p-5 min-h-60">
+      <div className="min-h-60 flex-1 rounded-2xl border border-border bg-card p-5 shadow-sm">
         {showSkeleton ? (
           <TechStackChartSkeleton />
         ) : isError ? (
           <p className="text-sm text-red-400">Failed to load chart</p>
         ) : languages.length === 0 ? (
-          <p className="text-sm text-text-tertiary">No data available</p>
+          <p className="text-sm text-muted-foreground">No data available</p>
         ) : (
-          <div className="flex items-center gap-2 md:gap-6 animate-in fade-in duration-500">
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-8">
             {/* CHART */}
             <div className="relative w-48 h-48 shrink-0">
               <ResponsiveContainer width="100%" height="100%">
@@ -97,7 +97,7 @@ export default function TechStack() {
             </div>
 
             {/* LEGEND */}
-            <div className="flex-1 space-y-2 text-sm">
+            <div className="w-full flex-1 space-y-2 text-sm">
               {languages.map((item) => (
                 <div
                   key={item.name}
@@ -117,7 +117,7 @@ export default function TechStack() {
                     {item.name}
                   </span>
 
-                  <span className="text-text-secondary">{item.value}%</span>
+                  <span className="text-muted-foreground">{item.value}%</span>
                 </div>
               ))}
             </div>

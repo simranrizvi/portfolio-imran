@@ -34,21 +34,20 @@ export function ProjectsSection() {
   return (
     <SectionContainer id="projects">
       <SectionHeading
-        title="My Projects"
-        subtitle="Enterprise platforms, workflow automation, and AI-assisted applications."
+        title="Selected Projects"
+        subtitle="A selection of products and platforms I have worked on."
       />
 
-      <div className="grid max-w-6xl mx-auto grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 md:gap-8 xl:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5 md:gap-6 xl:grid-cols-3">
         <AnimatePresence>
           {allProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
               viewport={{ once: true, margin: "-100px" }}
-              layout
             >
               <ProjectCard
                 project={project}
@@ -83,8 +82,8 @@ function getProjectWebsites(project: Project) {
 function ProjectCard({ project, onSelect }: ProjectCardProps) {
   const websites = getProjectWebsites(project);
   return (
-    <Card className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow">
-      <div className="relative h-48 overflow-hidden bg-muted flex items-center justify-center">
+    <Card className="flex h-full flex-col gap-0 overflow-hidden rounded-2xl border border-border bg-card pt-0 shadow-sm ring-0 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg">
+      <div className="relative flex h-44 items-center justify-center overflow-hidden border-b border-border bg-muted sm:h-48">
         {project.imageUrl ? (
           <Image
             src={project.imageUrl}
@@ -92,7 +91,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 350px"
             style={{ objectFit: "cover" }}
-            className="transition-transform duration-500 hover:scale-105"
+            className="transition-transform duration-500 group-hover/card:scale-[1.03]"
           />
         ) : (
           <span className="text-muted-foreground text-sm">
@@ -100,14 +99,18 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
           </span>
         )}
       </div>
-      <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
-        <CardDescription>{project.description}</CardDescription>
+      <CardHeader className="gap-2 pt-5">
+        <CardTitle className="text-lg font-semibold tracking-tight">
+          {project.title}
+        </CardTitle>
+        <CardDescription className="leading-relaxed">
+          {project.description}
+        </CardDescription>
       </CardHeader>
-      <CardContent className="grow">
+      <CardContent className="grow py-5">
         <div className="flex flex-wrap gap-2">
           {project.tags.slice(0, 3).map((tag) => (
-            <Badge key={tag} variant="secondary">
+            <Badge key={tag} variant="outline">
               {tag}
             </Badge>
           ))}
@@ -116,8 +119,13 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
           )}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="ghost" size="sm" onClick={onSelect}>
+      <CardFooter className="flex justify-between bg-transparent">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="font-medium"
+          onClick={onSelect}
+        >
           Learn More <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
         </Button>
 

@@ -12,7 +12,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import QueryProvider from "@/provider/QueryProvider";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import Script from "next/script";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -106,7 +105,6 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -115,7 +113,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <BackgroundBeams />
           <Navbar />
           <div className="fixed z-40 bottom-22 right-6">
             <ThemeSwitch />

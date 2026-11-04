@@ -7,7 +7,6 @@ import { FaGithub, FaLinkedinIn, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import { IconType } from "react-icons";
 import { cn } from "@/lib/utils";
 import { ButtonLink } from "../button-link";
-import { Cover } from "../ui/cover";
 
 const IconMap: Record<string, IconType> = {
   FaGithub,
@@ -47,58 +46,58 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+    <section className="relative flex min-h-[85svh] items-center py-28 sm:py-32">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-10 md:space-y-12"
+            className="space-y-7 md:space-y-8"
           >
             <motion.div variants={item}>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-[-0.02em] leading-[1.05]">
-                <span className="inline-block">Hi, I&apos;m</span>{" "}
-                <span className="inline-block text-primary">
-                  {personalInfo.name}
-                </span>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                Full Stack Development & AI Integration
+              </p>
+              <h1 className="text-4xl font-semibold tracking-[-0.04em] leading-[1.08] sm:text-5xl md:text-6xl lg:text-7xl">
+                {personalInfo.name}
               </h1>
             </motion.div>
 
             <motion.div variants={item}>
-              <Cover className="text-3xl md:text-4xl lg:text-5xl font-medium text-muted-foreground tracking-tight">
+              <p className="text-xl font-medium tracking-tight text-foreground/80 sm:text-2xl md:text-3xl">
                 {personalInfo.title}
-              </Cover>
+              </p>
             </motion.div>
 
             <motion.div variants={item}>
-              <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-12 text-muted-foreground leading-relaxed text-pretty">
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
                 {personalInfo.bio}
               </p>
             </motion.div>
 
-            <motion.div
-              variants={item}
-              className="flex flex-wrap gap-4 justify-center"
-            >
+            <motion.div variants={item} className="flex flex-wrap gap-3 pt-2">
+              <ButtonLink
+                href="/#projects"
+                icon={true}
+                className="h-11 rounded-lg px-5 text-sm"
+              >
+                View Projects
+              </ButtonLink>
               <ButtonLink
                 href={
                   personalInfo.resumeUrl ?? "/Syed_Muhammad_Imran_Resume.pdf"
                 }
                 newTab={true}
+                variant="outline"
+                className="h-11 rounded-lg px-5 text-sm"
               >
                 <Download aria-hidden="true" /> Download Resume
-              </ButtonLink>
-              <ButtonLink href="/#projects" icon={true}>
-                View My Work
-              </ButtonLink>
-              <ButtonLink href="/#contact" variant="outline">
-                Get In Touch
               </ButtonLink>
             </motion.div>
 
             <motion.div variants={item}>
-              <div className="flex gap-6 justify-center mt-6 md:mt-8">
+              <div className="flex gap-3 border-t border-border pt-6">
                 {socials.map((social) => {
                   const IconComponent = IconMap[social.icon];
                   return (
@@ -109,7 +108,7 @@ export function HeroSection() {
                       rel="noopener noreferrer"
                       aria-label={social.platform}
                       className={cn(
-                        "h-10 w-10 flex items-center justify-center rounded-full",
+                        "flex h-10 w-10 items-center justify-center rounded-lg",
                         "text-muted-foreground transition-all duration-300",
                         "border border-border",
                         IconHoverMap[social.icon] ||

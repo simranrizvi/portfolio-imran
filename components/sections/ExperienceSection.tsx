@@ -24,18 +24,17 @@ export function ExperienceSection() {
     <SectionContainer id="experience">
       <SectionHeading
         title="Experience & Education"
-        subtitle="My professional journey and educational background"
+        subtitle="Where I have worked and what I have learned."
       />
 
       <Tabs defaultValue="work" className="max-w-5xl mx-auto">
-        {/* Tabs Header */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-10"
+          className="mb-8 flex justify-center"
         >
-          <TabsList className="grid grid-cols-2 w-full max-w-xs">
+          <TabsList className="grid h-11 w-full max-w-xs grid-cols-2 rounded-lg border border-border bg-card p-1">
             <TabsTrigger value="work" className="gap-2">
               <BriefcaseIcon className="h-4 w-4" aria-hidden="true" />
               Work
@@ -48,29 +47,15 @@ export function ExperienceSection() {
           </TabsList>
         </motion.div>
 
-        {/* WORK */}
-        <TabsContent value="work" className="space-y-6">
+        <TabsContent value="work" className="space-y-4">
           {workExperiences.map((exp, i) => (
-            <ExperienceCard
-              key={exp.id}
-              experience={exp}
-              index={i}
-              total={workExperiences.length}
-              icon={<BriefcaseIcon className="h-5 w-5" aria-hidden="true" />}
-            />
+            <ExperienceCard key={exp.id} experience={exp} index={i} />
           ))}
         </TabsContent>
 
-        {/* EDUCATION */}
-        <TabsContent value="education" className="space-y-6">
+        <TabsContent value="education" className="space-y-4">
           {educationExperiences.map((exp, i) => (
-            <ExperienceCard
-              key={exp.id}
-              experience={exp}
-              index={i}
-              total={educationExperiences.length}
-              icon={<GraduationCap className="h-5 w-5" aria-hidden="true" />}
-            />
+            <ExperienceCard key={exp.id} experience={exp} index={i} />
           ))}
         </TabsContent>
       </Tabs>
@@ -78,43 +63,40 @@ export function ExperienceSection() {
   );
 }
 
-/* ---------------------------
-   EXPERIENCE CARD COMPONENT
----------------------------- */
-
 function ExperienceCard({
   experience,
   index,
 }: {
   experience: Experience;
   index: number;
-  total: number;
-  icon: React.ReactNode;
 }) {
   return (
     <motion.div
-      className="max-w-5xl mx-auto"
-      initial={{ opacity: 0, x: -15 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="mx-auto max-w-5xl"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.06 }}
       viewport={{ once: true }}
     >
-      <Card className="border shadow-sm hover:shadow-md transition-shadow duration-300">
-        <CardHeader>
-          <CardTitle className="text-lg font-semibold">
-            {experience.position}
-          </CardTitle>
-
-          <CardDescription className="text-sm">
-            <span className="font-medium text-foreground">
-              {experience.company}
-            </span>{" "}
-            • {experience.duration}
-          </CardDescription>
+      <Card className="gap-0 rounded-2xl border border-border bg-card py-6 shadow-sm ring-0 transition-colors duration-300 hover:border-foreground/20">
+        <CardHeader className="gap-2 px-6 sm:px-7">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <CardTitle className="text-lg font-semibold tracking-tight sm:text-xl">
+                {experience.position}
+              </CardTitle>
+              <CardDescription className="mt-1 text-sm font-medium">
+                {experience.company}
+              </CardDescription>
+            </div>
+            <span className="rounded-md border border-border bg-muted/40 px-2.5 py-1 text-xs font-medium text-muted-foreground">
+              {experience.duration}
+            </span>
+          </div>
         </CardHeader>
 
-        <CardContent>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+        <CardContent className="px-6 pt-4 sm:px-7">
+          <p className="mb-5 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             {experience.description}
           </p>
 
@@ -122,7 +104,7 @@ function ExperienceCard({
             {experience.technologies.map((tech) => (
               <Badge
                 key={tech}
-                variant="secondary"
+                variant="outline"
                 className="text-xs font-medium"
               >
                 {tech}

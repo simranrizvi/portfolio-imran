@@ -1,92 +1,105 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { DATA } from "@/data/resume";
-import { Marquee } from "@/components/ui/marquee";
 import { SectionContainer } from "@/components/section-container";
 import { SectionHeading } from "@/components/section-heading";
 
-const SkillCard = ({ skill }: { skill: (typeof DATA.skills)[0] }) => {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.08, y: -2, transition: { duration: 0.18 } }}
-      whileTap={{ scale: 0.95 }}
-      className="mx-1"
-    >
-      <div
-        className="flex items-center gap-2 rounded-full border px-4 h-9 cursor-default select-none transition-colors duration-200"
-        style={{
-          borderColor: `${skill.color}40`, // 25% opacity border
-          backgroundColor: `${skill.color}14`, // 8% opacity tinted bg
-          boxShadow: `0 0 0 0 ${skill.color}00`,
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.boxShadow =
-            `0 0 12px 2px ${skill.color}30`;
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLDivElement).style.boxShadow =
-            `0 0 0 0 ${skill.color}00`;
-        }}
-      >
-        {skill.icon && (
-          <span
-            style={{ color: skill.color }}
-            className="shrink-0 leading-none"
-          >
-            {React.cloneElement(
-              skill.icon as React.ReactElement<{
-                "aria-label"?: string;
-                role?: string;
-              }>,
-              {
-                "aria-label": skill.name,
-                role: "img",
-              },
-            )}
-          </span>
-        )}
-        <span className="text-sm font-medium text-foreground whitespace-nowrap">
-          {skill.name}
-        </span>
-      </div>
-    </motion.div>
-  );
-};
+const skillGroups = [
+  {
+    title: "Frontend",
+    description: "Interfaces and user experience",
+    names: ["HTML5", "CSS3", "Tailwind CSS", "React.js", "Next.js"],
+  },
+  {
+    title: "Backend & APIs",
+    description: "Services and integrations",
+    names: [
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "REST APIs",
+      "Python",
+      "API Integration",
+      "AI Integration",
+    ],
+  },
+  {
+    title: "Data & Infrastructure",
+    description: "Storage, queues, and deployment",
+    names: [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Prisma",
+      "Redis",
+      "BullMQ",
+      "Docker",
+    ],
+  },
+  {
+    title: "Tools & Security",
+    description: "Development and access control",
+    names: ["Git", "GitHub", "Postman", "JWT", "RBAC"],
+  },
+];
 
 export function SkillsSection() {
-  const skills = DATA.skills;
-  const firstRow = skills.slice(0, Math.ceil(skills.length / 2));
-  const secondRow = skills.slice(Math.ceil(skills.length / 2));
-
   return (
     <SectionContainer id="skills">
       <SectionHeading
-        title="Technologies & Tools I Work With"
-        subtitle="A snapshot of the languages, frameworks, and tools I use to build modern, scalable products."
+        title="Technical Skills"
+        subtitle="The technologies I use across full-stack development and AI integration."
       />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative mx-auto flex w-full max-w-5xl flex-col items-center justify-center gap-4 overflow-hidden py-6 md:py-8"
-      >
-        <Marquee pauseOnHover className="[--duration:30s]">
-          {firstRow.map((skill) => (
-            <SkillCard key={skill.name} skill={skill} />
-          ))}
-        </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:30s]">
-          {secondRow.map((skill) => (
-            <SkillCard key={skill.name} skill={skill} />
-          ))}
-        </Marquee>
-        <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
-        <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
-      </motion.div>
+      <div className="mx-auto max-w-5xl border-y border-border">
+        {skillGroups.map((group, index) => (
+          <motion.div
+            key={group.title}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: index * 0.05 }}
+            viewport={{ once: true, margin: "-40px" }}
+            className="grid gap-5 border-b border-border py-6 last:border-b-0 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10 md:py-8"
+          >
+            <div className="flex items-start gap-4">
+              <span className="pt-1 font-mono text-xs text-muted-foreground">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-foreground">
+                  {group.title}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {group.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3">
+              {DATA.skills
+                .filter((skill) => group.names.includes(skill.name))
+                .map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex min-w-0 items-center gap-2.5"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="flex size-5 shrink-0 items-center justify-center text-lg"
+                      style={{ color: skill.color }}
+                    >
+                      {skill.icon}
+                    </span>
+                    <span className="text-sm font-medium leading-snug text-foreground/85">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </SectionContainer>
   );
 }

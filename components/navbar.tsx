@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import { getPersonalInfo, getSocialLinks } from "@/lib/config";
@@ -25,9 +24,10 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "Skills", href: "/#skills" },
   { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/#experience" },
-  { label: "Stats", href: "/stats" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -62,18 +62,15 @@ export function Navbar() {
 
   return (
     <motion.header
-      className={cn(
-        "fixed top-0 w-full z-40 backdrop-blur-sm transition-all duration-300",
-        scrollY.get() > 50 ? "bg-background/80" : "bg-transparent",
-      )}
+      className="fixed top-0 z-40 w-full border-b border-border/70 bg-background/85 backdrop-blur-xl"
       initial={{ y: 0 }}
       animate={{ y: hidden ? -100 : 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="text-lg sm:text-xl font-bold"
+          className="text-base font-semibold tracking-tight sm:text-lg"
           onClick={closeMenu}
         >
           <motion.span
@@ -83,16 +80,9 @@ export function Navbar() {
             transition={{ delay: 0.2 }}
           >
             <Image
-              className="h-8 w-8 hidden dark:block"
+              className="h-8 w-8"
               src="/imran-logo.svg"
-              alt="imran-logo-dark"
-              width={32}
-              height={32}
-            />
-            <Image
-              className="h-8 w-8 block dark:hidden"
-              src="/imran-logo.svg"
-              alt="imran-logo-light"
+              alt=""
               width={32}
               height={32}
             />
@@ -105,7 +95,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden items-center gap-0.5 lg:flex">
             {navItems.map((item, i) => (
               <motion.div
                 key={item.label}
@@ -116,7 +106,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   asChild
-                  className="text-base font-medium rounded-full px-4"
+                  className="rounded-lg px-3 text-sm font-medium text-muted-foreground hover:text-foreground"
                 >
                   <Link href={item.href} onClick={closeMenu}>
                     {item.label}
@@ -132,7 +122,7 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="block md:hidden"
+                className="block lg:hidden"
                 aria-label="Toggle menu"
               >
                 <Menu className="h-6 w-6" aria-hidden="true" />
@@ -146,16 +136,9 @@ export function Navbar() {
                 <SheetTitle className="text-left flex items-center gap-2">
                   <div className="flex gap-2 items-center">
                     <Image
-                      className="h-8 w-8 hidden dark:block"
+                      className="h-8 w-8"
                       src="/imran-logo.svg"
-                      alt="imran-logo-dark"
-                      width={32}
-                      height={32}
-                    />
-                    <Image
-                      className="h-8 w-8 block dark:hidden"
-                      src="/imran-logo.svg"
-                      alt="imran-logo-light"
+                      alt=""
                       width={32}
                       height={32}
                     />

@@ -82,21 +82,21 @@ export default function Home() {
         <section
           id="contact"
           aria-labelledby="contact-heading"
-          className="mx-auto max-w-4xl scroll-mt-24 px-4 py-24 md:py-28 lg:py-32 text-center sm:px-6"
+          className="mx-auto max-w-4xl scroll-mt-24 px-4 py-24 text-center sm:px-6 md:py-28 lg:py-32"
         >
           <h2
             id="contact-heading"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.02em] leading-[1.05]"
+            className="text-4xl font-bold tracking-[-0.02em] leading-[1.05] md:text-5xl lg:text-6xl"
           >
             Get in touch
           </h2>
-          <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-pretty text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground md:text-xl">
             Have a project or opportunity to discuss? Contact {info.name} by
             email.
           </p>
           <a
-            href={`mailto:${info.email}`}
-            className="mt-8 md:mt-10 inline-block text-lg md:text-xl font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
+            href={"mailto:" + info.email}
+            className="mt-10 inline-block text-lg font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary md:text-xl"
           >
             {info.email}
           </a>

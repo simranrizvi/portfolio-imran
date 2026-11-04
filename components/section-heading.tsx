@@ -17,12 +17,12 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col items-center text-center mb-14 md:mb-16 lg:mb-20",
+        "mb-10 flex flex-col items-center text-center md:mb-12 lg:mb-14",
         className,
       )}
     >
       <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-5 tracking-[-0.02em] leading-[1.05]"
+        className="mb-3 text-3xl font-semibold tracking-[-0.035em] leading-tight sm:text-4xl md:text-5xl"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -33,7 +33,7 @@ export function SectionHeading({
 
       {subtitle && (
         <motion.p
-          className="text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed"
+          className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}

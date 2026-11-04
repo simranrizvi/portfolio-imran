@@ -28,9 +28,9 @@ export function ButtonLink({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      whileHover={{ y: -2 }}
+      whileTap={{ y: 0 }}
+      transition={{ duration: 0.18 }}
     >
       <Button variant={variant} asChild className={className}>
         <Link href={href} target={target} rel={rel}>

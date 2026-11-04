@@ -54,15 +54,15 @@ export default function StatsPage() {
           __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="mx-auto max-w-7xl min-h-screen pt-24 pb-12 px-4 xl:px-0 space-y-16">
+      <div className="mx-auto min-h-screen max-w-6xl space-y-14 px-4 pb-20 pt-28 sm:px-6 lg:px-8">
         {/* Analytics Section */}
         <section>
           <div className="mb-6 flex items-center gap-3">
             <BarChart3
-              className="size-6 text-text-tertiary"
+              className="size-5 text-muted-foreground"
               aria-hidden="true"
             />
-            <h1 className="text-2xl md:text-3xl font-bold text-text-primary tracking-tight">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
               Portfolio Analytics
             </h1>
           </div>
@@ -73,21 +73,23 @@ export default function StatsPage() {
         <section className="relative">
           <div className="mb-6 flex items-center gap-3">
             <GitGraph
-              className="size-6 text-text-tertiary"
+              className="size-5 text-muted-foreground"
               aria-hidden="true"
             />
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary tracking-tight">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
               Github Contributions
             </h2>
           </div>
-          <GithubContributions />
+          <div className="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-7">
+            <GithubContributions />
+          </div>
         </section>
 
         {/* Tech Stack */}
         <section>
           <div className="mb-6 flex items-center gap-3">
-            <Code className="size-6 text-text-tertiary" aria-hidden="true" />
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary tracking-tight">
+            <Code className="size-5 text-muted-foreground" aria-hidden="true" />
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
               Tech Stack & Languages
             </h2>
           </div>
